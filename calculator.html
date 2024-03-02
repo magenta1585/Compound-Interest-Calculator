@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"> </script>
+        <meta name ="description" content ="">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compound Interest Calculator</title>
+    </head>
+    <body>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"> </script>
+            <div id="navbar">
+                <ul>
+                    <li> <a href="index.html"> Home <!-- Can find some way to make this active--></a></li>
+                    <li><a href="definitions.html">Personal Finance Dictionary </a></li>
+                    <li class="active"><a href="calculator.html">Compound Interest Calculator</a></li>
+                    <li><a href="recommendations.html">Finance Creator Recommendations</a></li>
+                </ul>
+                </div>
+
+            <h1 id="heading"> Compound Interest Calculator </h1>
+            <p class="explain">
+                <strong> This compound interest calculator </strong> will help you learn how much your money can grow by leveraging the power of compound interest.
+                Use this calculator to predict your growth using different scenarios. For reference, over the past 50 years (1972-2021),
+                the average annualized return on the S&P 500 is 11.7% nominal and 7.00% adjusted for inflation <a class="superscript" href="https://www.investopedia.com/ask/answers/042415/what-average-annual-return-sp-500.asp">
+                    <sup>[1]</sup>
+                </a>
+                <br><br>
+                    This compound interest calculator has been designed with inspiration taken by the online compound interest calculator
+                    provided by the U.S. Securities and Exchange Commision. The results of the calculator on this site use the same functions and
+                    replicate those provided by the government site. <a class="superscript" href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+                    ><sup>[2]</sup></a>
+                    When no monthly contribution is entered, interest will be set to compound annually.
+                    If a monthly contribution is entered, interest will be set to compound monthly.
+
+
+            </p>
+
+
+            <div id="calcinputs">
+            <h4 id = "calchead">
+                Input Your Goals!
+            </h4>
+            <div id="grid-container">
+            <p class="item1">
+                <label> Initial Investment:</label>
+                <!--This value is just for practice-->
+                <input class=calcinput id="initial" type="number" name= "initial"
+                placeholder="Initial Amount" step="100"  value=5000>
+            </p>
+            <p>
+                <label>Interest Rate:</label>
+                <input class=calcinput id="rate" type="number" placeholder="Interest Rate"
+                step="0.5" value=5>
+            </p>
+            <p>
+                <label>Number of Years:</label>
+                <input class=calcinput id="years" type="number" placeholder="Number of Years"
+                step="5" value=10>
+            </p>
+            <p>
+                <label>Monthly Contribution:</label>
+                <input class=calcinput id="contribution" type="number" placeholder="Monthly Contribution"
+                step="5" value=100>
+            </p>
+            <p>
+                <input class=calcbutton id="submit" name="submit"  type="submit" onclick=" intCall(); generator();">
+
+            </p>
+            </div>
+            <p>
+                <span id="results"> Final Amount: <span id="final"> &nbsp; </span> </span>
+            </p>
+           </div>
+            <div id="chart-container">
+            <canvas id="lineChart" width="100" height="100" > </canvas>
+            </div>
+            <div id = divider>
+
+            </div>
+
+
+
+
+<script>
+
+function monthlyInterest2(p,r,t,n = 12,pmt = 0){
+    if (!(pmt>0)){
+        pmt = 0;
+        n = 1;
+    }
+    r = r/100;
+    let x = (r*10)/ (n*10);
+    let y = (n*10 * t * 10)/100;
+    let a = (p*Math.pow((1+x),t*n));
+    let a2 = pmt * ((Math.pow(1+x, y)-1)/ x);
+    let answer =a+a2;
+    return a+a2;
+}
+
+function intCall(){
+    let principal=document.getElementById("initial").value;
+    let rate = document.getElementById("rate").value;
+    let time = document.getElementById("years").value;
+    let nC = 12;
+    let payment = document.getElementById("contribution").value;
+    document.getElementById("final").innerHTML =
+    Number(monthlyInterest2(p=principal, r=rate, t=time, n=nC, pmt=payment)).toLocaleString('en-US', {style:"currency", currency:"USD"});
+}
+
+var labels = ["Year 0", "Year 1","Year 2", "Year 3", "Year 4",
+"Year 5", "Year 6", "Year 7","Year 8", "Year 9", "Year 10"];
+const data = {
+    labels: labels,
+    datasets: [{
+      axis: 'Total Amount',
+      label: 'Compound Interest Calculator',
+      data: [5000,6483.7,8043.3,9682.69,11405.97,13217.4,15121.51
+      ,17123.05,19226.98,21438.55,23763.28],
+      fill: true,
+      backgroundColor: [
+        'rgba(255, 0, 132, .2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 2
+    }]}
+
+const config ={
+    type: 'line',
+    data,
+    options:{
+      scales: {
+        y:{
+          ticks:{
+            color: '#fff'
+          }
+      }
+    },
+    legend: {
+        display: false
+    },
+    title:{
+        display: true,
+        text: "Compound Interest Calculator",
+        fontSize: 25,
+        fontFamily: 'serif',
+        padding: 20,
+
+    }
+  }
+};
+
+const myChart = new Chart(
+    document.getElementById("lineChart"),
+    config);
+
+function generator(){
+    const yearamounts = [];
+    const yearlabels = [];
+    let principal=document.getElementById("initial").value;
+    let rate = document.getElementById("rate").value;
+    let time = Number(document.getElementById("years").value);
+    let nC = 12;
+    let payment = document.getElementById("contribution").value;
+    for (let i = 0; i < time; i++){
+        yearamounts[i] = Number(Number(monthlyInterest2(p=principal, r=rate, t=i, n=nC, pmt=payment)).toFixed(2));
+    }
+    yearamounts[time] = Number(Number(monthlyInterest2(p=principal, r=rate, t=time, n=nC, pmt=payment)).toFixed(2));
+    for (let j=0; j < (time + 1); j++){
+        yearlabels[j] = "Year " + j;
+    }
+    // Year Labels and Year Amounts are generated reliably
+    // Generator function generates a new data set for the x and y axis
+    myChart.config.data.datasets[0].data = yearamounts;
+    myChart.config.data.labels = yearlabels;
+    myChart.update();
+    // Assigns new axes data to labels and data
+}
+  </script>
+
+
+
+    </body>
+</html>

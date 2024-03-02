@@ -1,0 +1,381 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #CFE0C3;
+}
+h1{
+    font-size: 60px;
+    text-align: center;
+    background-color: #70A9A1;
+    color:white;
+    padding: 20px;
+    margin: 0px;
+  }
+#why{
+    padding: 30px;
+    font-size: 25px
+}
+
+#navbar{
+    text-align:center;
+    background-color:#40798C;
+    padding:0px;
+    margin: 0px;
+}
+#navbar ul {
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+    text-align: center;
+}
+#navbar li{
+    float:none;
+    margin:0px;
+    padding:0px;
+}
+#navbar li a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    display: block;
+    padding: 14px 16px;
+    font-weight: bold;
+    margin:0px;
+}
+@media only screen and (min-width:900px){
+    #navbar li{float: left;}
+}
+#navbar li.active{
+    background-color:#1F363D;
+}
+#navbar li a:hover {
+    background-color: #CFE0C3;
+    color: #40798C;
+}
+img{
+    width: 100%;
+    height: 250px;
+}
+/* #textregion{
+    width:75%;
+    float: left;
+}
+*/
+/*#stockticker{
+    float:left;
+    width: 25%;
+    background-color:#9EC1A3;
+    height: 100%;
+}
+*/
+h2{
+    text-align:center;
+    color: white;
+    font-size:5em;
+    text-shadow: 3px 3px 2px #1F363D;
+}
+h3{
+    text-align:left;
+}
+
+.explain{
+    background-color: #1F363D80;
+    text-align:left;
+    color:white;
+    font-size: 15px;
+    padding: 0;
+    margin:0;
+    padding: 20px 80px;
+}
+#defexplain
+{
+    padding: 20px 80px;
+}
+#dictionaryH{
+    font-size: 30px;
+}
+th {
+    border-bottom: 2px solid #1F363D;
+  }
+strong{
+    font-style: italic;
+}
+
+#dictionary{
+    padding: 10px 20px;
+}
+/*gallery and youtube list media queries */
+h4{
+    margin-bottom: 5%;
+    text-align: center;
+    font-size:250%;
+    text-decoration: underline;
+    color: #1F363D;
+}
+.youtubelist{
+    margin: 0px 0px;
+    padding: 20px 0px;
+    float: none;
+    width:100%;
+    margin: 2%;
+    padding-top:20px;
+}
+.gallery{
+    float:none;
+    width: 100%;
+    padding: 20px;
+}
+iframe{
+    width: 70%;
+    height: 400px;
+    margin: auto;
+}
+#videoscontainer{
+    margin: auto;
+}
+@media only screen and (min-width:1052px){
+    h4{
+        margin-top: 0;
+        text-align: left;
+    }
+    .youtubelist{
+        float:left;
+        width:30%;
+        padding-top: 20px;
+        margin-top:0;
+    }
+    .gallery{
+        float:left;
+        width: 65%
+    }
+    iframe{
+        height: 300px;
+        width: 85%;
+    }
+}
+
+
+
+.container::after, .row::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+.column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
+}
+.container{
+    padding: 10px 16px;
+    height: 200px;
+}
+.overlay{
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0%;
+    transition: .5s ease;
+    background-color: #40798C;
+}
+.overlay:hover{
+    opacity: 1;
+}
+.text{
+    color:white;
+    font-size: 20px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#calcinputs{
+    padding: 0;
+    align: center;
+    border: solid 4px #9EC1A3;
+    width: 85%;
+    height:550px;
+    margin: auto;
+    border-radius: 20%;
+    background-color:#70A9A1;
+    float:none;
+    margin-top:5%
+/* Need three media queries: left side at 30% when large
+at 45-50% when tablet sized. on a phone, no float*/
+}
+#chart-container {
+    border: solid 3px;
+     width:75%;
+     height:100%;
+     background-color: white;
+     padding: 10px;
+     margin: auto;
+     float:none;
+     margin-top: 5%
+}
+#final{
+    background-color:#1F363DAA;
+    display: inline-block;
+    width: 35%;
+    color: white;
+}
+@media only screen and (min-width:594px){
+    #final{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 900px){
+#calcinputs{
+    float:left;
+    width: 45%;
+    height: 650px;
+    margin: 2%;
+}
+#chart-container{
+    float:left;
+    width: 45%;
+}
+}
+@media only screen and (min-width: 1500px){
+    #calcinputs{
+        width: 30%;
+    }
+    #chart-container{
+        margin-left: 15%;
+        width: 35%;
+        height: 90%;
+        margin-top: 2%;
+    }
+}
+
+#grid-container{
+
+    margin-top: 0px;
+    padding: 5px;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 20px;
+}
+#calchead{
+background-color: #1F363DDD;
+padding-top: 10px;
+margin: auto;
+margin-top: 3%;
+text-align: center;
+font-size: 30px;
+color: white;
+width: 60%;
+height: 10%;
+overflow: hidden;
+border-radius: 20px
+
+
+
+}
+label, input{
+    display:block;
+    margin: auto
+}
+
+label{
+    background-color: white;
+    width: 70%;
+    margin: 10px auto;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center
+}
+@media only screen and (min-width:800px){
+label{width: 75%;}
+}
+input{
+    background-color: beige;
+    width: 30%;
+    border-radius: 6px
+}
+#submit{
+
+    width: 50%;
+    font-weight: bold;
+}
+#results{
+    margin-left: 7%;
+    font-size: 150%;
+    font-weight: bold;
+    color: white;
+    text-shadow: -1px 0 #1F363D, 0 1px #1F363D, 1px 0 #1F363D, 0 -1px #1F363D;
+
+}
+#divider{height: 40px;}
+
+
+#creatorH{
+    text-align: center;
+    font-size: 250%;
+    text-decoration: underline;
+    color: #1F363D;
+
+}
+.handles{
+    margin-top: 30%;
+    margin-bottom: 50%;
+    text-align: center;
+    color: white;
+    font-size: 150%
+}
+.handlelink{
+    font-size: 60%;
+    color: white;
+}
+.handlelink:hover{
+    color: beige;
+}
+
+.term{
+    color:#1F363D;
+    font-weight: bold;
+}
+
+li{
+    margin-top: 2%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: left;
+    margin-left: 0%;
+    padding-left: 2%;
+    background-color: #70A9A1;
+    color:white;
+ }
+ .footera{
+    color: white;
+    font-weight:bold;
+ }
+
+ .superscript{
+    color:beige;
+ }
+ .superscript:hover{
+    color:#D9B382;
+ }
+ .flexcontainer{
+    display:flex;
+ }
